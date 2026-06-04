@@ -1,0 +1,12 @@
+{
+  "name": "novo-homem-2026",
+  "version": "1.0.0",
+  "description": "Landing page Novo Homem 2026",
+  "main": "novo-homem-2026.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

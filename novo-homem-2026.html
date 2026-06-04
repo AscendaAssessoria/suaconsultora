@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novo Homem 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:      #0A0A0A;
+      --bg2:     #111111;
+      --bg3:     #161616;
+      --gold:    #C9A84C;
+      --gold-lt: #E4C877;
+      --white:   #F0EDE8;
+      --muted:   #666;
+      --border:  rgba(201,168,76,.18);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 55% 45%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      padding: 80px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 48px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-size: clamp(64px, 8vw, 112px);
+      font-weight: 900;
+      line-height: .88;
+      letter-spacing: -3px;
+      text-transform: uppercase;
+    }
+    .hero-title .year {
+      display: block;
+      font-size: .38em;
+      font-weight: 300;
+      letter-spacing: 12px;
+      color: var(--gold);
+      margin-top: 18px;
+    }
+
+    .hero-sub {
+      margin-top: 36px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 380px;
+      letter-spacing: .3px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 20px 52px;
+      transition: background .25s, transform .25s;
+      width: fit-content;
+    }
+    .btn:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+    .hero-cta { margin-top: 52px; }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--bg) 0%, rgba(10,10,10,.2) 40%, transparent 70%);
+    }
+
+    /* ── RULE ─────────────────────────────────────────── */
+    .rule {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold) 40%, var(--gold) 60%, transparent);
+      margin: 0 72px;
+      opacity: .35;
+    }
+
+    /* ── LABEL ────────────────────────────────────────── */
+    .label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── BONUS ────────────────────────────────────────── */
+    .bonus {
+      background: var(--bg2);
+      padding: 100px 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .bonus-text .label { margin-bottom: 36px; }
+
+    .bonus-headline {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1.5px;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .bonus-headline em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .bonus-caveat {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 44px;
+    }
+
+    .bonus-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .bonus-items li {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      line-height: 1.5;
+      align-items: flex-start;
+    }
+    .bonus-items li .dash {
+      color: var(--gold);
+      font-size: 20px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .bonus-visual {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+    }
+    .bonus-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+    .bonus-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--bg2) 0%, transparent 50%);
+      z-index: 1;
+    }
+    .bonus-badge {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      z-index: 2;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 12px 20px;
+    }
+
+    /* ── GALLERY ──────────────────────────────────────── */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 380px;
+    }
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s ease, filter .7s ease;
+      filter: grayscale(40%) brightness(.85);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: grayscale(0%) brightness(1);
+    }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-right: 1px solid rgba(201,168,76,.1);
+    }
+
+    /* ── MODULES ──────────────────────────────────────── */
+    .modules {
+      padding: 100px 72px;
+      background: var(--bg);
+    }
+    .modules-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 72px;
+    }
+    .modules-headline {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    .modules-headline span { color: var(--gold); }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .mod {
+      background: var(--bg);
+      padding: 48px 32px;
+      position: relative;
+      transition: background .3s;
+      cursor: default;
+    }
+    .mod:hover { background: var(--bg3); }
+
+    .mod-num {
+      font-size: 56px;
+      font-weight: 900;
+      color: var(--gold);
+      opacity: .18;
+      line-height: 1;
+      margin-bottom: 32px;
+      transition: opacity .3s;
+    }
+    .mod:hover .mod-num { opacity: .4; }
+
+    .mod-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+    .mod-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ── PRICING ──────────────────────────────────────── */
+    .pricing {
+      background: var(--bg2);
+      padding: 100px 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .pricing-label { margin-bottom: 32px; }
+
+    .price-block { margin-bottom: 52px; }
+    .price-line {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .price-num {
+      font-size: clamp(52px, 7vw, 80px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+    .price-num sup {
+      font-size: .32em;
+      font-weight: 400;
+      vertical-align: top;
+      margin-top: .6em;
+      letter-spacing: 0;
+    }
+
+    .includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 52px;
+    }
+    .includes li {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .includes li::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .includes li .tag {
+      font-size: 10px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-left: 4px;
+    }
+
+    .pricing-visual {
+      position: relative;
+      height: 600px;
+      overflow: hidden;
+    }
+    .pricing-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(15%);
+    }
+    .pricing-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 55%, var(--bg2) 100%);
+    }
+
+    /* ── FINAL CTA ────────────────────────────────────── */
+    .final {
+      background: var(--bg3);
+      padding: 120px 72px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .final-copy .final-label { margin-bottom: 28px; }
+
+    .final-headline {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      line-height: .9;
+      margin-bottom: 28px;
+    }
+    .final-headline span { color: var(--gold); }
+
+    .final-sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 420px;
+      margin-bottom: 48px;
+    }
+
+    .final-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .author-img {
+      width: 180px;
+      height: 220px;
+      object-fit: cover;
+      object-position: top;
+      filter: grayscale(20%);
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .author-credit {
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    .foot {
+      padding: 32px 72px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .foot-copy {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+    .foot-link {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .foot-link:hover { color: var(--gold-lt); }
+
+    /* ── SCROLL REVEAL ────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .modules-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { height: 50vw; }
+      .hero-right::after { background: linear-gradient(to top, var(--bg) 0%, transparent 50%); }
+      .hero-left { padding: 60px 28px 40px; }
+      .bonus { grid-template-columns: 1fr; padding: 60px 28px; gap: 48px; }
+      .bonus-visual { height: 320px; }
+      .gallery { grid-template-columns: repeat(2, 1fr); height: 340px; }
+      .modules { padding: 60px 28px; }
+      .modules-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .modules-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing { grid-template-columns: 1fr; padding: 60px 28px; gap: 48px; }
+      .pricing-visual { height: 300px; }
+      .final { grid-template-columns: 1fr; padding: 60px 28px; gap: 48px; }
+      .final-right { flex-direction: row; justify-content: flex-start; }
+      .rule { margin: 0 28px; }
+      .foot { padding: 24px 28px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+
+    @media (max-width: 560px) {
+      .modules-grid { grid-template-columns: 1fr; }
+      .gallery { height: 220px; }
+      .final-right { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║           HERO               ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="hero-eyebrow reveal">Curso Online · Estilo Masculino</span>
+
+      <h1 class="hero-title reveal" style="transition-delay:.1s">
+        Novo<br>Homem
+        <span class="year">2 0 2 6</span>
+      </h1>
+
+      <p class="hero-sub reveal" style="transition-delay:.2s">
+        O método definitivo para transformar sua imagem, presença e estilo —
+        do guarda-roupa à mentalidade.
+      </p>
+
+      <div class="hero-cta reveal" style="transition-delay:.3s">
+        <a href="https://pay.hotmart.com/J103305066V" class="btn">Inscreva-se agora</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img
+        src="autora.jpg"
+        alt="Novo Homem 2026"
+        style="object-position: top center;"
+      >
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║           BÔNUS              ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="bonus">
+    <div class="bonus-text">
+      <p class="label reveal">🔥 Bônus exclusivo</p>
+
+      <h2 class="bonus-headline reveal" style="transition-delay:.1s">
+        Mentoria<br>ao vivo<br><em>comigo</em>
+      </h2>
+      <p class="bonus-caveat reveal" style="transition-delay:.15s">Somente para os 20 primeiros inscritos</p>
+
+      <ul class="bonus-items reveal" style="transition-delay:.2s">
+        <li><span class="dash">—</span><span>Análise personalizada do seu estilo</span></li>
+        <li><span class="dash">—</span><span>Orientação nos seus primeiros passos</span></li>
+        <li><span class="dash">—</span><span>Sessão de dúvidas individual</span></li>
+        <li><span class="dash">—</span><span>Ajuda prática para aplicar tudo no seu guarda-roupa</span></li>
+      </ul>
+    </div>
+
+    <div class="bonus-visual reveal" style="transition-delay:.2s">
+      <img
+        src="https://novohomem.my.canva.site/_assets/media/8a2f5b23ca8f7eb13350371d481c40c5.png"
+        alt=""
+        style="object-position: center center;"
+      >
+      <div class="bonus-badge">Bônus · 20 vagas</div>
+    </div>
+  </section>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║          GALLERY STRIP       ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="https://novohomem.my.canva.site/_assets/media/6edced7fa051ebab2559c385f2338b7b.jpg" alt="" style="object-position: top center;">
+    </div>
+    <div class="gallery-item">
+      <img src="https://novohomem.my.canva.site/_assets/media/f5d44e93425f9a4ffe456ae36f078fd0.jpg" alt="">
+    </div>
+    <div class="gallery-item">
+      <img src="https://novohomem.my.canva.site/_assets/media/31b877786d563863dde21c23d70c17f8.jpg" alt="">
+    </div>
+    <div class="gallery-item">
+      <img src="https://novohomem.my.canva.site/_assets/media/e78268c08de4c727c163c10a9af3bd34.jpg" alt="">
+    </div>
+  </div>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║          MÓDULOS             ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="modules">
+    <div class="modules-header">
+      <div>
+        <p class="label reveal" style="margin-bottom:16px">Conteúdo do curso</p>
+        <h2 class="modules-headline reveal" style="transition-delay:.1s">
+          O que você vai<br><span>aprender</span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="modules-grid reveal" style="transition-delay:.2s">
+      <div class="mod">
+        <div class="mod-num">01</div>
+        <h3 class="mod-title">Mentalidade do Novo Homem</h3>
+        <p class="mod-desc">A mudança começa na mente: presença, postura e imagem estratégica.</p>
+      </div>
+      <div class="mod">
+        <div class="mod-num">02</div>
+        <h3 class="mod-title">Limpeza Total do Guarda-Roupa</h3>
+        <p class="mod-desc">Elimine tudo que te envelhece, engorda e te deixa inseguro.</p>
+      </div>
+      <div class="mod">
+        <div class="mod-num">03</div>
+        <h3 class="mod-title">Descubra seu Estilo</h3>
+        <p class="mod-desc">O método definitivo para definir o seu estilo de forma autêntica.</p>
+      </div>
+      <div class="mod">
+        <div class="mod-num">04</div>
+        <h3 class="mod-title">Autônomos: Vestindo Autoridade</h3>
+        <p class="mod-desc">O visual exato para advogados, médicos, marketing, vendas e consultores.</p>
+      </div>
+      <div class="mod">
+        <div class="mod-num">05</div>
+        <h3 class="mod-title">CLT: Se Destacar com Uniforme</h3>
+        <p class="mod-desc">Presença, higiene, detalhes e postura que te colocam um nível acima.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║          PRICING             ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="pricing">
+    <div>
+      <p class="label pricing-label reveal">Investimento</p>
+
+      <div class="price-block reveal" style="transition-delay:.1s">
+        <p class="price-line">por apenas</p>
+        <div class="price-num"><sup>R$</sup> 249</div>
+      </div>
+
+      <ul class="includes reveal" style="transition-delay:.15s">
+        <li>Curso completo + Bônus de dois módulos</li>
+        <li>Lista de compras</li>
+        <li>Acesso vitalício</li>
+        <li>Certificado</li>
+        <li>Atualizações gratuitas</li>
+        <li>Mentoria particular ao vivo <span class="tag">— 20 primeiros</span></li>
+      </ul>
+
+      <div class="reveal" style="transition-delay:.25s">
+        <a href="https://pay.hotmart.com/J103305066V" class="btn">Garantir minha vaga</a>
+      </div>
+    </div>
+
+    <div class="pricing-visual reveal" style="transition-delay:.2s">
+      <img
+        src="https://novohomem.my.canva.site/_assets/media/31b877786d563863dde21c23d70c17f8.jpg"
+        alt=""
+      >
+    </div>
+  </section>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║          FINAL CTA           ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="final">
+    <div class="final-copy">
+      <p class="label final-label reveal">Sua transformação começa agora</p>
+
+      <h2 class="final-headline reveal" style="transition-delay:.1s">
+        A versão que<br>você quer ser<br><span>existe.</span>
+      </h2>
+
+      <p class="final-sub reveal" style="transition-delay:.15s">
+        Mais presença, mais confiança, mais respeito — sem gastar errado
+        e sem precisar de um guarda-roupa novo do zero.
+      </p>
+
+      <div class="reveal" style="transition-delay:.2s">
+        <a href="https://pay.hotmart.com/J103305066V" class="btn">Inscreva-se — R$249</a>
+      </div>
+    </div>
+
+    <div class="final-right reveal" style="transition-delay:.25s">
+      <img
+        class="author-img"
+        src="https://novohomem.my.canva.site/_assets/media/f5d44e93425f9a4ffe456ae36f078fd0.jpg"
+        alt=""
+        style="height:260px; width:200px; object-position: top center;"
+      >
+      <p class="author-credit">Novo Homem<br>2026</p>
+    </div>
+  </section>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║          FOOTER              ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <footer class="foot">
+    <span class="foot-copy">© 2026 Novo Homem</span>
+    <a class="foot-link" href="https://pay.hotmart.com/J103305066V">Inscreva-se →</a>
+  </footer>
+
+  <!-- ── Scroll reveal ── -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
